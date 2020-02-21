@@ -3,6 +3,7 @@ import java.util.ArrayList;
 public class Customer {
     // Fields
     private String name;
+    private double funds;
     private ArrayList<Double> transactions;
 
     // Constructors
@@ -10,6 +11,7 @@ public class Customer {
         this.name = name;
         this.transactions = new ArrayList<>();
         this.transactions.add(transaction);
+        funds = transaction;
     }
 
     // Getters & Setters
@@ -23,7 +25,12 @@ public class Customer {
 
     // Methods
     public void addTransaction(Double transaction) {
-        transactions.add(transaction);
+        if (transaction <= funds) {
+            transactions.add(transaction);
+            funds += transaction;
+        } else {
+            System.out.println("Insufficient funds!\nTransaction cancelled.");
+        }
     }
 
 
